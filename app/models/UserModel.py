@@ -43,8 +43,6 @@ CALENDAR_REGEX = re.compile(r'^(0[1-9]|1[0-2])[- \/\.](0[1-9]|[1-2][0-9]|3[0-1])
 # need tewo \d \d for number of digit follows but no need to limted to a spacific space
 
 
-
-
 class UserModel(Model):
     def __init__(self):
         super(UserModel, self).__init__()
