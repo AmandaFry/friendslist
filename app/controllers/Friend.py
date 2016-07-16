@@ -8,17 +8,23 @@ class Friend(Controller):
         # self.db = self._app.db
 
     def dashboard(self):
-        # friend = self.models['FriendModel'].my_friends()
-        # print ('%' * 25)
-        # print friend
-        # print ('%' * 25)
-        # not_friend = self.models['FriendModel'].not_friend()
-        # print ('!' * 25)
-        # print others_trip
-        # print ('!' * 25)
-        # return self.load_view('dashboard.html', mytrips=mytrips, trips_joined=trip_joined, others_trips=others_trip)
-        return self.load_view('dashboard.html')
+        friends = self.models['FriendModel'].my_friends()
+        print ('%' * 25)
+        print friends
+        print ('%' * 25)
+        not_friends = self.models['FriendModel'].not_friends()
+        print ('!' * 25)
+        print not_friends
+        print ('!' * 25)
+        return self.load_view('dashboard.html', friends=friends, not_friends=not_friends)
 
+    def profile(self,id):
+        profile = self.models['FriendModel'].profile(id)
+        pass
+
+    def add_friend(self, id):
+        add_friend = self.models['FriendModel'].add_friend(id)
+        pass
 
     # def add_travel(self):
     #     return self.load_view('addplan.html')

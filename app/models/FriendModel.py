@@ -9,10 +9,26 @@ class FriendModel(Model):
     def __init__(self):
         super(FriendModel, self).__init__()
  
+    def my_friends(self):
+        query = "SELECT * FROM friendslist WHERE user_id = :id"
+        data = { 'id' : session['id']}
+        my_friends = self.db.query_db(query, data)
+        return (my_friends)
 
+    def not_friends(self):
+        query = "SELECT users.first_name, users.alias, users.id FROM users LEFT JOIN friendslist ON users.id = friendslist.user_id"
+        not_friends = self.db.query_db(query)
+        return (not_friends)
 
- 
+    def profile(self, id):
+        pass
+
+    def add_friend(self,id):
+        pass
     
+    #     query = "SELECT * from trips where organizer_id = :id"
+    #     data = {'id': session['id']}
+    #     return self.db.query_db(query, data)
 
     # def add_trip(self, trip_info):
     #     travel_erorrs = []

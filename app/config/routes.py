@@ -5,7 +5,8 @@ routes['POST']['/login'] = 'User#login'
 routes['POST']['/register'] = 'User#register'
 routes['GET']['/logout'] = 'User#logout'
 routes['GET']['/dashboard'] = 'Friend#dashboard'
-
+routes['GET']['/profile/<id>'] = 'Friend#profile'
+routes['POST']['/add/<id>'] = 'Friend#add_friend'
 
 """
     You can add routes and specify their handlers as follows:

@@ -21,6 +21,43 @@
             <div class="row">
             <p style="text-align:right"> Welcome: <span class="boldme">{{ session['name']}}</span> - ({{ session['id']}}) - <a href="/logout">Logout</a></p>
             </div>
+
+            <div class="row">
+                <h3>Here is the list of your friends:</h3>
+                <table>
+                    <tr>
+                        <th class="tab">Name - Alias</th>
+                        <th class="tab">Action</th>
+                    </tr>
+                    {% if friends %}
+                        {% for friend in friends %}
+                            <tr>
+                                <th class="tab"></th>
+                                <th class="tab"></th>
+                            </tr>
+                        {% endfor %}
+                    {% endif%}
+                </table>
+            </div>
+            </br>
+
+            <div class="row">
+                <h3>Other users not on your friend list:</h3>
+                <table>
+                    <tr>
+                        <th class="tab">Name - Alias</th>
+                        <th class="tab">Action</th>
+                    </tr>
+                     {% if not_friends %}
+                        {% for not_friend in not_friends %}
+                            <tr>
+                                <td class="tab"><a href="/profile/{{ not_friend['id'] }}">{{ not_friend['first_name'] }} - {{ not_friend['alias'] }}</a></td>
+                                <td class="tab"><a href="/add/{{ not_friend['id'] }}">Add as friend - {{ not_friend['id'] }}</a></td>
+                            </tr>
+                        {% endfor %}
+                    {% endif%}
+                </table>
+            </div>
             
             
         </div><!-- end of main content-->
