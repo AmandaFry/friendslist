@@ -10,14 +10,15 @@ class FriendModel(Model):
         super(FriendModel, self).__init__()
  
     def my_friends(self):
-        query = "SELECT * FROM users JOIN friendslist ON users.id = friendslist.user_id WHERE user_id =:id"
+        query = "SELECT users.first_name, users.alias, users.id FROM users JOIN friendslist ON users.id = friendslist.friend_id WHERE user_id =:id"
         data = { 'id' : session['id']}
         my_friends = self.db.query_db(query, data)
         return (my_friends)
 
     def not_friends(self):
-        query = "SELECT users.first_name, users.alias, users.id FROM users LEFT JOIN friendslist ON users.id = friendslist.user_id"
-        not_friends = self.db.query_db(query)
+        query = "SELECT users.first_name, users.alias, users.id FROM users LEFT JOIN friendslist ON users.id = friendslist.user_id WHERE users.id != :id"
+        data = { 'id' : session['id']}
+        not_friends = self.db.query_db(query, data)
         return (not_friends)
 
     def profile(self, id):
