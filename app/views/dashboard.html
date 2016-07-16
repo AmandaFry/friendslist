@@ -32,8 +32,8 @@
                     {% if friends %}
                         {% for friend in friends %}
                             <tr>
-                                <th class="tab"></th>
-                                <th class="tab"></th>
+                                <th class="tab">{{ friend['first_name'] }} {{ friend['alias'] }}</th>
+                                <th class="tab"><a href="/profile/{{ friend['id'] }}">View Profile - {{ friend['id'] }}</a> <a href="/remove/{{ friend['id'] }}">Remove friend - {{ friend['id'] }}</a></th>
                             </tr>
                         {% endfor %}
                     {% endif%}
